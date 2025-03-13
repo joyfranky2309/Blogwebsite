@@ -29,16 +29,23 @@ function NavBar(props) {
     }
   };
 
+  const handleLogoutClick = () => {
+    props.setLoggedIn(false);
+    localStorage.clear("token");
+    nav("/");
+    window.location.reload();
+  };
+
   return (
     <div className='navbar'>
-      <h2 onClick={()=>{
-        nav("/")
-        window.location.reload()
-        }
-        }>WriteWave</h2>
+      <h2 onClick={() => {
+        nav("/");
+        window.location.reload();
+      }}>WriteWave</h2>
       {props.loggedIn ? (
         <div>
-          <button onClick={props.logout}>Logout</button>
+          <input type="text" placeholder="Search..." className="search-bar" />
+          <button onClick={handleLogoutClick}>Logout</button>
         </div>
       ) : (
         <div>
