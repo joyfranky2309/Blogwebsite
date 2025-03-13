@@ -1,0 +1,42 @@
+.hero-container {
+    background: url('C:/Users/Sudha/Desktop/projectah/Blogwebsite/client/public/imagesir.webp') no-repeat center center/cover;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-container h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.hero-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.5;
+    font-family: 'Arial', sans-serif;
+}
+
+.hero-container button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+.hero-container button:hover {
+    background: #0056b3;
+}
