@@ -1,58 +1,52 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
 
-const CommentSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    rating: {
-        type: Number,
-        max: 5,
-        min: 0,
-        default: 0
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-const BlogSchema = new Schema({
-    topic: {
-        type: String,
-        required: true
-    },
-    author: {
-        type:String,
-        required:true
-    },
+const BlogSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
-
     content: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
-    likes:{
-        type:Number,
-        default:0
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
     },
-    comments: [CommentSchema],
-    reports: {
+    topics: {
+        type: [String],
+        default: [],
+    },
+    likes: {
         type: Number,
-        default: 0
-    }
+        default: 0,
+    },
+    likedBy: {
+        type: [mongoose.Schema.Types.ObjectId], // Array of user IDs who liked the blog
+        ref: "User",
+        default: [],
+    },
+    comments: [
+        {
+            author: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+            },
+            content: {
+                type: String,
+                required: true,
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
 module.exports = mongoose.model("Blog", BlogSchema);

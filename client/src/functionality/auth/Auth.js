@@ -28,4 +28,14 @@ const login = async (username, password, nav, setLoggedIn) => {
   }
 };
 
+export const fetchUserById = async (userId) => {
+  try {
+    const res = await axios.get(`http://localhost:5000/api/auth/getuser/${userId}`);
+    return { username: res.data.username, role: res.data.role }; // Return both username and role
+  } catch (err) {
+    console.error(err);
+    return { username: "Unknown User", role: "user" }; // Fallback if the user is not found
+  }
+};
+
 export { register, login };
